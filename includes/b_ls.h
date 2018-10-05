@@ -17,6 +17,7 @@
 # include <sys/types.h>
 # include <dirent.h>
 # include <stdlib.h>
+# include <sys/stat.h>
 
 typedef struct		s_flags
 {
@@ -24,34 +25,40 @@ typedef struct		s_flags
 	int				l;
 	int				t;
 	int				r;
+	int				invalid;
 }					t_flags;
 
-typedef struct		s_paths
+typedef struct		s_list
 {
-	char			*folder;
-	//s_paths			*next;
-	struct s_paths	*next;
-}					t_paths;
-
-typedef struct		s_flags_paths
-{
-	t_paths			*paths;
-	t_flags			flags;
-}					t_flags_paths;
-
-typedef struct		s_contents
-{
-	struct dirent	*ep;
-	struct s_contents	*next;
-}					t_contents;
+	void			*data;
+	struct s_list	*next;
+}					t_list;
 
 void				b_ls(int argc, char **argv);
-t_flags				flag_initialize(void);
-t_paths				*path_initialize(void);
-t_contents			*add_list_entry(t_contents *head, struct dirent *ep);
-t_flags_paths		*initialize_empty_flags_paths(void);
-t_flags_paths		*parse_flags_paths(int argc, char **argv);
-t_contents			*fill_contents(void);
-void				add_path(t_paths *paths, char *path);
+
+t_flags				get_flags(int argc, char **argv);
+t_flags     		initialize_flags();
+
+t_list				*get_paths(int argc, char **argv);
+
+t_list				*initialize_node();
+t_list				*add_node(t_list *list, void *data);
+
+t_list				*get_errors(t_list *paths);
+
+t_list				*apply_paths_flags(t_list *paths, t_flags flags);
+
+t_list				*sort_by_name(t_list *paths, int flag_reverse);
+
+//Redo function with reverse or write personal sort for and combine sort_by_name and sort_by_time => selection_sort
+t_list				*sort_by_time(t_list *paths, int flag_time);
+
+int					is_valid_flag(char c);
+t_flags				set_valid_flag(t_flags flags, char type);
+t_flags				set_invalid_flag(t_flags flags);
+size_t				ft_strlen(const char *str);
+int					ft_strcmp(const char *s1, const char *s2);
+void				node_swap(t_list *node_one, t_list *node_two);
+void				node_copy(t_list *src, t_list *dst);
 
 #endif

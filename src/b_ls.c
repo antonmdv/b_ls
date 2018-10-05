@@ -10,60 +10,62 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "b_ls.h"
+#include "../includes/b_ls.h"
 
 void	b_ls(int argc, char **argv)
 {
-	t_contents			*contents;
-	t_flags_paths	*flags_paths; 
-	
-	if(argc > 1)
-		flags_paths = parse_flags_paths(argc, argv);
-	else			
-		flags_paths = initialize_empty_flags_paths();
+	t_flags	flags;
+	t_list	*paths;
 
+	//for pronting paths
+	t_list	*tmp;
 
-	/*for every single path
-	  		create contents
-	 
-	for every signle contentes
-	 		sort with flags
-	 
-	for every contents list
-	 		output
-	 */
-	
-	//FiLL contents with path "./" late pass the actual path 
-	contents = fill_contents();
-	
-	while(contents != NULL)
-	{
-		//contents = contents->next;
-		printf("%s\n",contents->ep->d_name);
-		contents = contents->next;
-	}
-	
+	//	1. Read Arguments
+	flags = get_flags(argc, argv);
+
+	//test print flag struct
+	printf("Flags:\ta: %d\tl: %d\tt: %d\tr: %d\tINVALID: %d\n", flags.a, flags.l, flags.t, flags.r, flags.invalid);
+
 	/*
-
-	if(argc > 1)
-		get_flags;
-
-	contents = fill_list();
-
-	contents = sort(contents, flags);
-
-	output(contents);
-	*/
-	argc = 0;
-	argv = NULL;
-	//printf("Standart Path: %s\n", flags_paths->paths->folder);
-	printf("Flags\t a:%d\tl:%d\tr:%d\tr:%d\t\n",flags_paths->flags.a, flags_paths->flags.l, flags_paths->flags.t, flags_paths->flags.r);
-	
-	while(flags_paths->paths)
+	How to throw => usage: ./b_ls [alrt] [file ...]
+	if(flags.invalid == 1)
 	{
-		printf("Paths: %s\n", flags_paths->paths->folder);
-		flags_paths->paths = flags_paths->paths->next;
+		printf("b_ls: illegal option -- %c\n", str[i]);
+		printf("usage: ./b_ls [alrt] [file ...]\n");
+		return ;
+	}
+	*/
+
+
+	//	2. Read Paths
+	paths = get_paths(argc, argv);
+	
+	//	3. Display Path Errors
+	paths = get_errors(paths);
+	
+	//	4. Sort by lexiogical order and by modification time
+	paths = apply_paths_flags(paths, flags);
+
+	//test print path contents
+	tmp = paths;
+	while(tmp)
+	{
+		printf("%s\n", (char *)tmp->data);
+		tmp = tmp->next;
 	}
 	
-	
+
+	//	5. Sort everything
+	//For every valid path get contents of the folder and sort them with proper flags; 
+	//contents_paths = parse_all_contents(contents_paths);
+
+	/*
+	1. Read Arguments										into the Flags Struct
+	2. Read Paths											into Linked List
+	3. Display Path Errors									and remove invalid from linked list
+	4. For every valid path get contents of the folder		Linked list of (Linked List of Contents)
+	5. Display Files
+	6. Display SymLinks
+	7. Display Directories
+	*/
 }
