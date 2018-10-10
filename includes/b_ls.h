@@ -50,8 +50,15 @@ t_list				*apply_paths_flags(t_list *paths, t_flags flags);
 
 t_list				*sort_by_name(t_list *paths, int flag_reverse);
 
-//Redo function with reverse or write personal sort for and combine sort_by_name and sort_by_time => selection_sort
-t_list				*sort_by_time(t_list *paths, int flag_time);
+t_list				*sort_by_time(t_list *paths, int flag_reverse);
+
+void				display_files(t_list *paths, t_flags flags);
+void				display_symlinks(t_list *paths, t_flags flags);
+void				display_dirs(t_list *paths, t_flags flags);
+
+
+void				display_content(t_list *entity, t_flags flags);
+t_list				*get_folder_content(char *folder_name);
 
 int					is_valid_flag(char c);
 t_flags				set_valid_flag(t_flags flags, char type);

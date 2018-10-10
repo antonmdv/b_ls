@@ -20,7 +20,11 @@ t_flags     get_flags(int argc, char **argv)
                 if(is_valid_flag(argv[i][j]) == 1)
                     flags = set_valid_flag(flags, argv[i][j]);
                 else
+                {
                     flags = set_invalid_flag(flags);
+                    printf("b_ls: illegal option -- %c\n", argv[i][j]);
+                    printf("usage: ./b_ls [alrt] [file ...]\n");
+                }
                 j++;
             }
         }

@@ -17,55 +17,59 @@ void	b_ls(int argc, char **argv)
 	t_flags	flags;
 	t_list	*paths;
 
-	//for pronting paths
-	t_list	*tmp;
+	//TEST	for pronting paths
+	//t_list	*tmp;
 
-	//	1. Read Arguments
+	//	1. Read Flags				->			Valid Flags: -a -l -r -t
 	flags = get_flags(argc, argv);
-
-	//test print flag struct
-	printf("Flags:\ta: %d\tl: %d\tt: %d\tr: %d\tINVALID: %d\n", flags.a, flags.l, flags.t, flags.r, flags.invalid);
-
-	/*
-	How to throw => usage: ./b_ls [alrt] [file ...]
+	
+	//	2. Terminate if illigal Flag was used
 	if(flags.invalid == 1)
-	{
-		printf("b_ls: illegal option -- %c\n", str[i]);
-		printf("usage: ./b_ls [alrt] [file ...]\n");
 		return ;
-	}
-	*/
+	
+	//TEST	print flag struct
+	//printf("Flags:\ta: %d\tl: %d\tt: %d\tr: %d\tINVALID: %d\n", flags.a, flags.l, flags.t, flags.r, flags.invalid);
 
 
-	//	2. Read Paths
+	//	3. Read Paths
 	paths = get_paths(argc, argv);
 	
-	//	3. Display Path Errors
+	//	4. Display Path Errors
 	paths = get_errors(paths);
 	
-	//	4. Sort by lexiogical order and by modification time
+	//	5. Sort by lexiogical order and by modification time
 	paths = apply_paths_flags(paths, flags);
 
-	//test print path contents
+	//TEST print path contents
+	/*
 	tmp = paths;
 	while(tmp)
 	{
 		printf("%s\n", (char *)tmp->data);
 		tmp = tmp->next;
 	}
-	
+	*/
 
-	//	5. Sort everything
-	//For every valid path get contents of the folder and sort them with proper flags; 
-	//contents_paths = parse_all_contents(contents_paths);
+	//TEST	Flags done so far: -l && -r
+
+	//	6. Display files ->->-> DELETE COMMENTS
+	display_files(paths, flags);
+	
+	//	7. Display simlinks ->->-> DELETE COMMENTS
+	display_symlinks(paths, flags);
+	
+	//	8. Display directories
+	//	TO FINISH: apply flags, 
+	display_dirs(paths, flags);
 
 	/*
-	1. Read Arguments										into the Flags Struct
-	2. Read Paths											into Linked List
-	3. Display Path Errors									and remove invalid from linked list
-	4. For every valid path get contents of the folder		Linked list of (Linked List of Contents)
-	5. Display Files
-	6. Display SymLinks
-	7. Display Directories
+	1. Read Flags										into the Flags Struct
+	2. Throw Flagg Error								return if nessecary
+	3. Read Paths										into Linked List
+	3. Display Path Errors
+	4. Apply flags 										-l && -r to paths									
+	5. Display Files									(with proper flags)
+	6. Display SymLinks									(with proper flags)
+	7. Display Directories								(with proper flags)
 	*/
 }
