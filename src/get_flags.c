@@ -23,7 +23,7 @@ t_flags     get_flags(int argc, char **argv)
                 {
                     flags = set_invalid_flag(flags);
                     printf("b_ls: illegal option -- %c\n", argv[i][j]);
-                    printf("usage: ./b_ls [alrt] [file ...]\n");
+                    printf("usage: ./b_ls [-arlt] [file ...]\n");
                 }
                 j++;
             }

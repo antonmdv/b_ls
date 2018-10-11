@@ -19,14 +19,17 @@ void				display_files(t_list *paths, t_flags flags)
         }
         paths = paths->next;
     }
+    //BROKEN
+    /*
     if(file_list->data != NULL)
         display_content(file_list, flags);
-    /*
+    */
         while(file_list)
         {
             //Delete "FILE"
+            flags.a = -1;
             printf("FILE: %s\n", (char *)file_list->data);
             file_list = file_list->next;
         }
-    */
+
 }

@@ -38,7 +38,7 @@ void	b_ls(int argc, char **argv)
 	paths = get_errors(paths);
 	
 	//	5. Sort by lexiogical order and by modification time
-	paths = apply_paths_flags(paths, flags);
+	paths = apply_flags_r_t(paths, flags);
 
 	//TEST print path contents
 	/*

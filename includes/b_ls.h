@@ -19,6 +19,8 @@
 # include <stdlib.h>
 # include <sys/stat.h>
 
+# define CWHITE  "\x1B[37m"
+
 typedef struct		s_flags
 {
 	int				a;
@@ -46,7 +48,7 @@ t_list				*add_node(t_list *list, void *data);
 
 t_list				*get_errors(t_list *paths);
 
-t_list				*apply_paths_flags(t_list *paths, t_flags flags);
+t_list				*apply_flags_r_t(t_list *paths, t_flags flags);
 
 t_list				*sort_by_name(t_list *paths, int flag_reverse);
 
@@ -59,6 +61,8 @@ void				display_dirs(t_list *paths, t_flags flags);
 
 void				display_content(t_list *entity, t_flags flags);
 t_list				*get_folder_content(char *folder_name);
+
+void				display_entity(char *entity_name, int format);
 
 int					is_valid_flag(char c);
 t_flags				set_valid_flag(t_flags flags, char type);
