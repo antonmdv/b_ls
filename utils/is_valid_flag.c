@@ -1,7 +1,7 @@
 
 #include "../includes/b_ls.h"
 
-int is_valid_flag(char c)
+int     is_valid_flag(char c)
 {
     int is_valid;
 

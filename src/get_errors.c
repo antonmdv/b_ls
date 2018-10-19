@@ -7,12 +7,9 @@ t_list  *get_errors(t_list *paths)
     DIR     *dir;
     struct  stat st;
 
-    //  1. Sort List by name -> NEEDS IMPLEMENTATION
     paths  = sort_by_name(paths, 0);
-
-    //  2. Display errors and  ?? remove invalid paths ?? 
     root = paths;
-    while(paths)
+    while (paths)
     {
         dir = opendir((char *)paths->data);
         if ( stat( (char *)paths->data, &st) && !dir)

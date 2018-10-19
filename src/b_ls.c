@@ -10,57 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/b_ls.h"
-
-void	b_ls(int argc, char **argv)
-{
-	t_flags	flags;
-	t_list	*paths;
-
-	//TEST	for pronting paths
-	//t_list	*tmp;
-
-	//	1. Read Flags				->			Valid Flags: -a -l -r -t
-	flags = get_flags(argc, argv);
-	
-	//	2. Terminate if illigal Flag was used
-	if(flags.invalid == 1)
-		return ;
-	
-	//TEST	print flag struct
-	//printf("Flags:\ta: %d\tl: %d\tt: %d\tr: %d\tINVALID: %d\n", flags.a, flags.l, flags.t, flags.r, flags.invalid);
-
-
-	//	3. Read Paths
-	paths = get_paths(argc, argv);
-	
-	//	4. Display Path Errors
-	paths = get_errors(paths);
-	
-	//	5. Sort by lexiogical order and by modification time
-	paths = apply_flags_r_t(paths, flags);
-
-	//TEST print path contents
-	/*
-	tmp = paths;
-	while(tmp)
-	{
-		printf("%s\n", (char *)tmp->data);
-		tmp = tmp->next;
-	}
-	*/
-
-	//TEST	Flags done so far: -l && -r
-
-	//	6. Display files ->->-> DELETE COMMENTS
-	display_files(paths, flags);
-	
-	//	7. Display simlinks ->->-> DELETE COMMENTS
-	display_symlinks(paths, flags);
-	
-	//	8. Display directories
-	//	TO FINISH: apply flags, 
-	display_dirs(paths, flags);
 
 	/*
 	1. Read Flags										into the Flags Struct
@@ -72,4 +21,37 @@ void	b_ls(int argc, char **argv)
 	6. Display SymLinks									(with proper flags)
 	7. Display Directories								(with proper flags)
 	*/
+
+#include "../includes/b_ls.h"
+
+void	b_ls(int argc, char **argv)
+{
+	t_flags	flags;
+	t_list	*paths;
+
+	//	1. Read Flags				->			Valid Flags: -a -l -r -t
+	flags = get_flags(argc, argv);
+	
+	if(flags.invalid == 1)
+		return ;
+
+	//	3. Read Paths
+	paths = get_paths(argc, argv);
+	
+	//	4. Display Path Errors
+	paths = get_errors(paths);
+	
+	//	5. Sort by lexiogical order and by modification time (-l && -r)
+	paths = apply_flags_r_t(paths, flags);
+
+	//	6. Display files
+	display_files(paths, flags);
+	
+	//	7. Display simlinks
+	display_symlinks(paths, flags);
+	
+	//	8. Display directories			=> TO FINISH: Fix formatting for flag -l
+	display_dirs(paths, flags);
+
+	//CLEAN MEMORY LEAKS
 }

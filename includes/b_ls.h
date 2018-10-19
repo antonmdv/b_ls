@@ -18,8 +18,9 @@
 # include <dirent.h>
 # include <stdlib.h>
 # include <sys/stat.h>
-
-# define CWHITE  "\x1B[37m"
+# include <pwd.h>
+# include <grp.h>
+# include <time.h>
 
 typedef struct		s_flags
 {
@@ -62,8 +63,6 @@ void				display_dirs(t_list *paths, t_flags flags);
 void				display_content(t_list *entity, t_flags flags);
 t_list				*get_folder_content(char *folder_name);
 
-void				display_entity(char *entity_name, int format);
-
 int					is_valid_flag(char c);
 t_flags				set_valid_flag(t_flags flags, char type);
 t_flags				set_invalid_flag(t_flags flags);
@@ -72,4 +71,11 @@ int					ft_strcmp(const char *s1, const char *s2);
 void				node_swap(t_list *node_one, t_list *node_two);
 void				node_copy(t_list *src, t_list *dst);
 
+int					list_length(t_list *list);
+long long			count_blocks(t_list *entity);
+
+void 				l_mode_display(char *entity);
+
+void				mode_select(mode_t mode, char *c);
+char				*mode_print(mode_t mode);
 #endif
