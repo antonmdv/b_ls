@@ -38,31 +38,21 @@ typedef struct		s_list
 }					t_list;
 
 void				b_ls(int argc, char **argv);
-
 t_flags				get_flags(int argc, char **argv);
-t_flags     		initialize_flags();
-
+t_flags				initialize_flags(void);
 t_list				*get_paths(int argc, char **argv);
-
-t_list				*initialize_node();
+t_list				*initialize_node(void);
 t_list				*add_node(t_list *list, void *data);
-
 t_list				*get_errors(t_list *paths);
-
 t_list				*apply_flags_r_t(t_list *paths, t_flags flags);
-
 t_list				*sort_by_name(t_list *paths, int flag_reverse);
-
 t_list				*sort_by_time(t_list *paths, int flag_reverse);
-
 void				display_files(t_list *paths, t_flags flags);
 void				display_symlinks(t_list *paths, t_flags flags);
 void				display_dirs(t_list *paths, t_flags flags);
-
-
-void				display_content(char *current_path, t_list *current_content, t_flags flags);
+void				display_content(char *current_path,
+									t_list *current_content, t_flags flags);
 t_list				*get_folder_content(char *folder_name);
-
 int					is_valid_flag(char c);
 t_flags				set_valid_flag(t_flags flags, char type);
 t_flags				set_invalid_flag(t_flags flags);
@@ -70,15 +60,12 @@ size_t				ft_strlen(const char *str);
 int					ft_strcmp(const char *s1, const char *s2);
 void				node_swap(t_list *node_one, t_list *node_two);
 void				node_copy(t_list *src, t_list *dst);
-
 int					list_length(t_list *list);
-long long			count_blocks(char *current_path, t_list *entity, int flag_a);
-
-void 				l_mode_display(char *current_path, char *entity);
-
+long long			count_blocks(char *current_path,
+								t_list *entity, int flag_a);
+void				l_mode_display(char *current_path, char *entity);
 void				mode_select(mode_t mode, char *c);
 char				*mode_print(mode_t mode);
-
 char				*ft_strcat(char *dest, char *src);
 char				*ft_strdup(char *src);
 

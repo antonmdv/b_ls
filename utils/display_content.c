@@ -1,13 +1,13 @@
 #include "../includes/b_ls.h"
 
-void        display_content(char *current_path, t_list *content, t_flags flags)
+void		display_content(char *current_path, t_list *content, t_flags flags)
 {
-    char            *name;
+	char	*name;
 
-	//current_path = "";
 	content = apply_flags_r_t(content, flags);
-	if(flags.l == 1)
-        printf("total %lld\n", count_blocks(current_path,content, flags.a));
+	if (flags.l == 1)
+		printf("total %lld\n",
+		count_blocks(current_path, content, flags.a));
 	while (content)
 	{
 		name = (char *)content->data;
@@ -19,12 +19,10 @@ void        display_content(char *current_path, t_list *content, t_flags flags)
 				name = (char *)content->data;
 			}
 		}
-		if (flags.l ==1 )
-		{
-			l_mode_display(current_path,name);
-		}
+		if (flags.l == 1)
+			l_mode_display(current_path, name);
 		else
-			printf("%s\n",name);
+			printf("%s\n", name);
 		content = content->next;
 	}
 }

@@ -2,17 +2,17 @@
 
 char	*ft_strcat(char *dest, char *src)
 {
-    char *new_str;
-	int i;
-	int j;
+	char	*new_str;
+	int		i;
+	int		j;
 
 	i = 0;
-    new_str = (char *)malloc(sizeof(char) * (ft_strlen(dest)+ft_strlen(src)));
+	new_str = (char *)malloc(sizeof(char) * (ft_strlen(dest) + ft_strlen(src)));
 	while (dest[i] != '\0')
-    {
+	{
 		new_str[i] = dest[i];
-        i++;
-    }
+		i++;
+	}
 	j = 0;
 	while (src[j] != '\0')
 	{

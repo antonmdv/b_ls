@@ -1,6 +1,6 @@
 #include "../includes/b_ls.h"
 
-char	*ft_strdup(char *src)
+char		*ft_strdup(char *src)
 {
 	int		i;
 	char	*str;

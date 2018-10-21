@@ -1,0 +1,8 @@
+{
+    "editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	
+	// The number of spaces a tab is equal to.
+	"editor.tabSize": 4,
+
+}
