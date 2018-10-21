@@ -9,12 +9,11 @@ void        l_mode_display(char *current_path, char *entity)
     char *name;
 
     name = "";
-	if(current_path[ft_strlen(current_path)-1] != '/')
-		name = ft_strcat(ft_strcat(current_path, "/"), entity);
+	  if(current_path[ft_strlen(current_path)-1] != '/')
+		  name = ft_strcat(ft_strcat(current_path, "/"), entity);
     else
-		name = ft_strcat(current_path, entity);
+		  name = ft_strcat(current_path, entity);
 	
-    //printf("%s\t", name);
 
     stat(name, &buff);
     //For the mode

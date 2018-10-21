@@ -72,7 +72,7 @@ void				node_swap(t_list *node_one, t_list *node_two);
 void				node_copy(t_list *src, t_list *dst);
 
 int					list_length(t_list *list);
-long long			count_blocks(t_list *entity);
+long long			count_blocks(char *current_path, t_list *entity, int flag_a);
 
 void 				l_mode_display(char *current_path, char *entity);
 

@@ -7,7 +7,7 @@ void        display_content(char *current_path, t_list *content, t_flags flags)
 	//current_path = "";
 	content = apply_flags_r_t(content, flags);
 	if(flags.l == 1)
-        printf("total %lld\n", count_blocks(content));
+        printf("total %lld\n", count_blocks(current_path,content, flags.a));
 	while (content)
 	{
 		name = (char *)content->data;
