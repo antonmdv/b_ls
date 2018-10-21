@@ -16,6 +16,7 @@ t_list  *get_errors(t_list *paths)
 			printf("b_ls: %s: No such file or directory\n", (char *)paths->data);
         paths = paths->next;
     }
-    closedir(dir);
+    //printf("DONE");
+    //closedir(dir);
     return (root);
 }

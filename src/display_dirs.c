@@ -9,10 +9,6 @@ void				display_dirs(t_list *paths, t_flags flags)
 	DIR	*dir;
 	struct stat buff;	
 
-	//delete later
-	//flags.l =-1;		
-	
-	
 	tmp = paths;
 
 	while(paths)
