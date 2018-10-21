@@ -26,7 +26,7 @@ void				display_dirs(t_list *paths, t_flags flags)
 			//Check if the list length is greater than 1
 			if(list_length(tmp) > 1)
 				printf("%s:\n",(char *)paths->data);
-			display_content(current_content, flags);
+			display_content((char *)paths->data,current_content, flags);
 			if(list_length(tmp) > 1 && paths->next)
 				printf("\n");
 			/*

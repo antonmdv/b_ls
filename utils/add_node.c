@@ -7,7 +7,7 @@ t_list  *add_node(t_list *list, void *data)
 
     if ((list->data == NULL && list->next == NULL) || list == NULL)
     {
-        list->data = data;
+        list->data = ft_strdup(data);
         list->next = NULL;
 	    return (list);
     }
@@ -15,7 +15,7 @@ t_list  *add_node(t_list *list, void *data)
     while(list->next)
         list = list->next;
     node = initialize_node();
-    node->data = data;
+    node->data = ft_strdup(data);
     node->next = NULL;
     list->next = node;
     return (head); 

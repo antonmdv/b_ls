@@ -15,5 +15,5 @@ void    display_symlinks(t_list *paths, t_flags flags)
         paths = paths->next;
     }
     if (symlink_list->data != NULL)
-        display_content(symlink_list, flags);
+        display_content(".",symlink_list, flags);
 }

@@ -1,9 +1,10 @@
 #include "../includes/b_ls.h"
 
-void        display_content(t_list *content, t_flags flags)
+void        display_content(char *current_path, t_list *content, t_flags flags)
 {
     char            *name;
 
+	//current_path = "";
 	content = apply_flags_r_t(content, flags);
 	if(flags.l == 1)
         printf("total %lld\n", count_blocks(content));
@@ -19,7 +20,9 @@ void        display_content(t_list *content, t_flags flags)
 			}
 		}
 		if (flags.l ==1 )
-			l_mode_display(name);
+		{
+			l_mode_display(current_path,name);
+		}
 		else
 			printf("%s\n",name);
 		content = content->next;

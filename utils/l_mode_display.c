@@ -2,12 +2,21 @@
 
 //DELETE COMMENTS AFTER FINISH WITH FORMATTING
 
-void        l_mode_display(char *entity)
+void        l_mode_display(char *current_path, char *entity)
 {
     char c;
     struct stat buff;
+    char *name;
 
-    stat(entity, &buff);
+    name = "";
+	if(current_path[ft_strlen(current_path)-1] != '/')
+		name = ft_strcat(ft_strcat(current_path, "/"), entity);
+    else
+		name = ft_strcat(current_path, entity);
+	
+    //printf("%s\t", name);
+
+    stat(name, &buff);
     //For the mode
     mode_select(buff.st_mode, &c);
     printf("%c",c);

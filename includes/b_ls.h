@@ -60,7 +60,7 @@ void				display_symlinks(t_list *paths, t_flags flags);
 void				display_dirs(t_list *paths, t_flags flags);
 
 
-void				display_content(t_list *entity, t_flags flags);
+void				display_content(char *current_path, t_list *current_content, t_flags flags);
 t_list				*get_folder_content(char *folder_name);
 
 int					is_valid_flag(char c);
@@ -74,8 +74,12 @@ void				node_copy(t_list *src, t_list *dst);
 int					list_length(t_list *list);
 long long			count_blocks(t_list *entity);
 
-void 				l_mode_display(char *entity);
+void 				l_mode_display(char *current_path, char *entity);
 
 void				mode_select(mode_t mode, char *c);
 char				*mode_print(mode_t mode);
+
+char				*ft_strcat(char *dest, char *src);
+char				*ft_strdup(char *src);
+
 #endif

@@ -20,5 +20,5 @@ void				display_files(t_list *paths, t_flags flags)
         paths = paths->next;
     }
     if (file_list->data != NULL)
-        display_content(file_list, flags);
+        display_content(".",file_list, flags);
 }
