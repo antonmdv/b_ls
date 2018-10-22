@@ -20,8 +20,6 @@ t_list		*add_node(t_list *list, void *data)
 	if ((list->data == NULL && list->next == NULL) || list == NULL)
 	{
 		list->data = ft_strdup(data);
-		//list->data = malloc(sizeof(data));
-		//list->data = data;
 		list->next = NULL;
 		return (list);
 	}
@@ -30,8 +28,6 @@ t_list		*add_node(t_list *list, void *data)
 		list = list->next;
 	node = initialize_node();
 	node->data = ft_strdup(data);
-	//node->data = malloc(sizeof(data));
-	//node->data = data;
 	node->next = NULL;
 	list->next = node;
 	return (head);

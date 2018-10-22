@@ -11,21 +11,21 @@
 /* ************************************************************************** */
 
 #include "../includes/b_ls.h"
+
 void		print_link(char *name)
 {
-	ssize_t len;
-	char link[1024];
+	ssize_t		len;
+	char		link[1024];
 
 	len = readlink(name, link, sizeof(link) - 1);
 	if (len != -1)
-        link[len] = '\0';
-    else
-    {
-        perror(name);
-        exit(-1);
-    }
+		link[len] = '\0';
+	else
+	{
+		perror(name);
+		exit(-1);
+	}
 	printf(" -> %s", link);
-
 }
 
 void		l_mode_display(char *current_path, char *entity)
@@ -49,7 +49,7 @@ void		l_mode_display(char *current_path, char *entity)
 	printf("%5lld ", buff.st_size);
 	printf("%.12s ", ctime(&buff.st_mtime) + 4);
 	printf("\t%s", entity);
-	if(S_ISLNK(buff.st_mode))
+	if (S_ISLNK(buff.st_mode))
 		print_link(name);
 	printf("\n");
 }

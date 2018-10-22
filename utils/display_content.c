@@ -27,17 +27,17 @@ void		display_content(char *current_path, t_list *content, t_flags flags)
 		{
 			while (name[0] == '.')
 			{
-				if(content->next)
+				if (content->next)
 				{
 					content = content->next;
 					name = (char *)content->data;
 				}
 				else
-					break;
+					break ;
 			}
 		}
-		if(flags.a == 0 && name[0] == '.' && !content->next)
-			break;
+		if (flags.a == 0 && name[0] == '.' && !content->next)
+			break ;
 		if (flags.l == 1)
 			l_mode_display(current_path, name);
 		else
