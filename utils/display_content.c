@@ -18,24 +18,18 @@ void		display_content(char *current_path, t_list *content, t_flags flags)
 
 	content = apply_flags_r_t(content, flags);
 	if (flags.l == 1)
-		printf("total %lld\n",
-		count_blocks(current_path, content, flags.a));
+		printf("total %lld\n", count_blocks(current_path, content, flags.a));
 	while (content)
 	{
 		name = (char *)content->data;
 		if (flags.a == 0)
-		{
 			while (name[0] == '.')
 			{
-				if (content->next)
-				{
-					content = content->next;
-					name = (char *)content->data;
-				}
-				else
+				if (!content->next)
 					break ;
+				content = content->next;
+				name = (char *)content->data;
 			}
-		}
 		if (flags.a == 0 && name[0] == '.' && !content->next)
 			break ;
 		if (flags.l == 1)
