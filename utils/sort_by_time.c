@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_by_time.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amedvede <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/10/21 17:02:34 by amedvede          #+#    #+#             */
+/*   Updated: 2018/10/21 17:26:55 by amedvede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/b_ls.h"
 
@@ -14,10 +25,10 @@ t_list		*sort_by_time(t_list *paths, int flag_reverse)
 		j = paths;
 		while (j->next)
 		{
-			lstat((char *)j->data, &st1);
-			lstat((char *)j->next->data, &st2);
+			stat((char *)j->data, &st1);
+			stat((char *)j->next->data, &st2);
 			if (flag_reverse ? st1.st_mtime > st2.st_mtime
-				: st1.st_mtime < st2.st_mtime)
+			: st1.st_mtime < st2.st_mtime) 
 				node_swap(j, j->next);
 			else if (st1.st_mtime == st2.st_mtime)
 			{

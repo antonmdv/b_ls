@@ -21,6 +21,7 @@
 # include <pwd.h>
 # include <grp.h>
 # include <time.h>
+# include <unistd.h>
 
 typedef struct		s_flags
 {
@@ -55,7 +56,7 @@ void				display_content(char *current_path,
 t_list				*get_folder_content(char *folder_name);
 int					is_valid_flag(char c);
 t_flags				set_valid_flag(t_flags flags, char type);
-t_flags				set_invalid_flag(t_flags flags);
+t_flags				set_invalid_flag(t_flags flags, char invalid);
 size_t				ft_strlen(const char *str);
 int					ft_strcmp(const char *s1, const char *s2);
 void				node_swap(t_list *node_one, t_list *node_two);

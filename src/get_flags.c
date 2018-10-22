@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_flags.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amedvede <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/10/21 16:56:10 by amedvede          #+#    #+#             */
+/*   Updated: 2018/10/21 16:56:25 by amedvede         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/b_ls.h"
 
 t_flags			get_flags(int argc, char **argv)
@@ -18,11 +30,7 @@ t_flags			get_flags(int argc, char **argv)
 				if (is_valid_flag(argv[i][j]) == 1)
 					flags = set_valid_flag(flags, argv[i][j]);
 				else
-				{
-					flags = set_invalid_flag(flags);
-					printf("b_ls: illegal option -- %c\n", argv[i][j]);
-					printf("usage: ./b_ls [-arlt] [file ...]\n");
-				}
+					flags = set_invalid_flag(flags, argv[i][j]);
 				j++;
 			}
 		}
